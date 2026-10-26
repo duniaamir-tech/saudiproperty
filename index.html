@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Estates | Private Luxury Property Portfolio</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F5F1E8',
+                            200: '#EFECE3',
+                            300: '#E5DFD3',
+                            400: '#D6CDBB',
+                        },
+                        darkGreen: {
+                            800: '#163B30',
+                            900: '#0F2C23',
+                            950: '#0A1E18',
+                        },
+                        neBlue: {
+                            300: '#6B8CA3',
+                            400: '#4B708A',
+                            500: '#3A6073',
+                            600: '#2E4F63',
+                            700: '#223B4A',
+                        },
+                        accentRed: {
+                            400: '#E25353',
+                            500: '#C83E3E',
+                            600: '#B22222',
+                            700: '#8E1B1B',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F5EE;
+            color: #1A2421;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .green-gradient-text {
+            background: linear-gradient(135deg, #0F2C23 0%, #2E4F63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cream-glass {
+            background: rgba(245, 241, 232, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 44, 35, 0.1);
+        }
+        .dark-glass {
+            background: rgba(15, 44, 35, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 241, 232, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F5F1E8;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2E4F63;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar antialiased selection:bg-accentRed-500 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-40 transition-all duration-300 cream-glass border-b border-darkGreen-900/10 px-6 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-darkGreen-900 flex items-center justify-center bg-darkGreen-900 text-cream-100 font-serif font-bold text-xl">
+                    A
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-wider text-darkGreen-900">AURA</span>
+                    <span class="block text-[9px] tracking-widest text-neBlue-600 uppercase font-bold -mt-1">Private Portfolio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-darkGreen-900">
+                <a href="#hero" class="hover:text-accentRed-500 transition-colors">Overview</a>
+                <a href="#properties" class="hover:text-accentRed-500 transition-colors">Properties</a>
+                <a href="#calculator" onclick="openCalculatorModal()" class="hover:text-accentRed-500 transition-colors">Investment ROI</a>
+                <a href="#contact" class="hover:text-accentRed-500 transition-colors">Schedule Viewing</a>
+            </div>
+
+            <!-- Action CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="scrollToContact()" class="bg-accentRed-500 hover:bg-accentRed-600 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Direct Inquiry
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-darkGreen-900 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-darkGreen-900/10 flex flex-col gap-4">
+            <a href="#hero" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Overview</a>
+            <a href="#properties" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Properties</a>
+            <a href="#calculator" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="openCalculatorModal(); toggleMobileMenu();">Investment ROI</a>
+            <a href="#contact" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Schedule Viewing</a>
+            <button onclick="scrollToContact(); toggleMobileMenu();" class="w-full bg-accentRed-500 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-full shadow">
+                Direct Inquiry
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
+        <!-- Ambient Decor Circles -->
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-neBlue-300/15 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-accentRed-400/10 blur-[140px] rounded-full pointer-events-none"></div>
+
+        <div class="relative max-w-5xl mx-auto text-center z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-darkGreen-900/5 border border-darkGreen-900/15 text-darkGreen-900 text-xs font-bold tracking-widest uppercase mb-6">
+                <i class="fa-solid fa-gem text-accentRed-500"></i> Private Real Estate Portfolio
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 text-darkGreen-900">
+                Architectural Distinction. <br>
+                <span class="green-gradient-text">Exquisite Living Spaces.</span>
+            </h1>
+
+            <p class="text-gray-700 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                An exclusive collection of four premier luxury assets—curated for private acquisition, long-term capital appreciation, and superior rental yields.
+            </p>
+
+            <!-- Search & Filter Controls -->
+            <div class="bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl max-w-4xl mx-auto shadow-xl border border-darkGreen-900/10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Search Input -->
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-neBlue-500"></i>
+                        <input type="text" id="search-input" placeholder="Search by title, location..." 
+                            class="w-full bg-cream-100/70 border border-darkGreen-900/15 rounded-xl py-3 pl-11 pr-4 text-sm text-darkGreen-900 placeholder-gray-500 focus:outline-none focus:border-neBlue-600 transition-colors">
+                    </div>
+
+                    <!-- Type Filter -->
+                    <div class="relative">
+                        <i class="fa-solid fa-building absolute left-4 top-1/2 -translate-y-1/2 text-neBlue-500"></i>
+                        <select id="type-filter" class="w-full bg-cream-100/70 border border-darkGreen-900/15 rounded-xl py-3 pl-11 pr-8 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors appearance-none cursor-pointer font-medium">
+                            <option value="All">All Categories</option>
+                            <option value="Villa">Executive Villa</option>
+                            <option value="Penthouse">Luxury Penthouse</option>
+                            <option value="Commercial">Commercial Office</option>
+                            <option value="Eco Retreat">Eco Retreat</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-neBlue-500 pointer-events-none text-xs"></i>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="relative">
+                        <i class="fa-solid fa-tag absolute left-4 top-1/2 -translate-y-1/2 text-neBlue-500"></i>
+                        <select id="status-filter" class="w-full bg-cream-100/70 border border-darkGreen-900/15 rounded-xl py-3 pl-11 pr-8 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors appearance-none cursor-pointer font-medium">
+                            <option value="All">All Statuses</option>
+                            <option value="For Sale">For Sale</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Investment">Investment Yield</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-neBlue-500 pointer-events-none text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-darkGreen-900/10 max-w-3xl mx-auto">
+                <div>
+                    <p class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900">4</p>
+                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Premier Listings</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl md:text-4xl font-bold text-accentRed-500">$31.5M</p>
+                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Total Valuation</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900">100%</p>
+                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Prime Locations</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl md:text-4xl font-bold text-neBlue-600">7.6%</p>
+                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Avg Rental Yield</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Showcase Grid -->
+    <section id="properties" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-darkGreen-900/10 pb-6">
+            <div>
+                <span class="text-accentRed-500 text-xs font-bold tracking-widest uppercase">Featured Assets</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900 mt-1">Curated Real Estate Portfolio</h2>
+            </div>
+            <p class="text-gray-600 text-sm max-w-md mt-4 md:mt-0 font-normal">
+                Filter by category or status to inspect floor plans, high-res architectural galleries, and financial yields.
+            </p>
+        </div>
+
+        <!-- Property Grid Container -->
+        <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Rendered via Javascript -->
+        </div>
+
+        <!-- Empty State Filter Notice -->
+        <div id="no-results" class="hidden text-center py-16 bg-white/60 rounded-2xl border border-darkGreen-900/10 shadow-sm">
+            <i class="fa-solid fa-building-circle-xmark text-4xl text-neBlue-500/50 mb-3"></i>
+            <h3 class="text-lg font-bold text-darkGreen-900">No matching assets found</h3>
+            <p class="text-gray-600 text-sm mt-1">Try selecting another filter or clearing your search term.</p>
+            <button onclick="resetFilters()" class="mt-4 px-5 py-2 bg-darkGreen-900 text-cream-100 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-neBlue-600 transition-all">Reset Filters</button>
+        </div>
+    </section>
+
+    <!-- Investment ROI Banner Anchor -->
+    <section id="calculator" class="py-16 px-6 bg-darkGreen-900 text-cream-100 relative overflow-hidden shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+            <div class="max-w-2xl">
+                <span class="text-accentRed-400 text-xs font-bold tracking-widest uppercase">Financial Modeling</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mt-1 text-white">Mortgage & Investment ROI Yield Calculator</h2>
+                <p class="text-cream-200 text-sm mt-2 font-normal leading-relaxed">
+                    Estimate down payments, monthly repayments, loan-to-value ratios, and projected rental returns across this private portfolio.
+                </p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="openCalculatorModal()" class="bg-accentRed-500 hover:bg-accentRed-600 text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg hover:shadow-accentRed-500/30">
+                    <i class="fa-solid fa-calculator"></i> Launch Financial Suite
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Booking & Contact Section -->
+    <section id="contact" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Contact Info -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <span class="text-accentRed-500 text-xs font-bold tracking-widest uppercase">Private Representation</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900 mt-2 mb-4">Schedule a Confidential Tour</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-8 font-normal">
+                        Connect directly with the portfolio representative to request private access, due diligence documentation, or custom acquisition structures.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-neBlue-600/10 border border-neBlue-600/20 flex items-center justify-center text-neBlue-600 flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-gray-500 tracking-wider">Direct Hotline</h4>
+                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">+1 (800) 458-2872 / +1 (555) 019-2834</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-neBlue-600/10 border border-neBlue-600/20 flex items-center justify-center text-neBlue-600 flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-gray-500 tracking-wider">Portfolio Desk</h4>
+                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">acquisitions@aura-portfolio.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-700/10 border border-emerald-700/20 flex items-center justify-center text-emerald-700 flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-gray-500 tracking-wider">Instant Concierge</h4>
+                                <button onclick="triggerWhatsApp('General Portfolio Inquiry')" class="text-emerald-800 hover:text-emerald-900 font-bold text-sm mt-0.5 flex items-center gap-2 underline">
+                                    Chat directly on WhatsApp <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 rounded-xl bg-white border border-darkGreen-900/10 text-xs text-gray-600">
+                    <p class="flex items-center gap-2 text-darkGreen-900 font-bold mb-1">
+                        <i class="fa-solid fa-shield-halved text-accentRed-500"></i> Strict Confidentiality Policy
+                    </p>
+                    All buyer details and viewing requests remain strictly private under NDA guidelines.
+                </div>
+            </div>
+
+            <!-- Right Interactive Form / Calendar -->
+            <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-darkGreen-900/10 shadow-xl">
+                <form id="general-inquiry-form" onsubmit="handleInquirySubmit(event, 'Private Tour Request')">
+                    <h3 class="font-serif text-2xl font-bold text-darkGreen-900 mb-6 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check text-neBlue-600"></i> Select Viewing Schedule
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Full Name *</label>
+                            <input type="text" required placeholder="John Doe" 
+                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Email Address *</label>
+                            <input type="email" required placeholder="john@example.com" 
+                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Phone Number *</label>
+                            <input type="tel" required placeholder="+1 (555) 000-0000" 
+                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Select Property Asset *</label>
+                            <select id="contact-property-select" class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 font-medium focus:outline-none focus:border-neBlue-600 transition-colors">
+                                <option value="Tropics Sanctuary Estate">Tropics Sanctuary Estate ($8,500,000)</option>
+                                <option value="AURA Executive Sky Penthouse">AURA Executive Sky Penthouse ($12,800,000)</option>
+                                <option value="Apex Innovation Commercial Hub">Apex Innovation Commercial Hub ($4,000,000)</option>
+                                <option value="Serenity Eco Retreat & Coastal Reserve">Serenity Eco Retreat & Coastal Reserve ($6,200,000)</option>
+                                <option value="Entire Portfolio Package">Entire Portfolio Package ($31,500,000)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Preferred Viewing Date *</label>
+                            <input type="date" required id="booking-date" 
+                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Preferred Time Slot *</label>
+                            <select class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 font-medium focus:outline-none focus:border-neBlue-600 transition-colors">
+                                <option>10:00 AM - 11:30 AM</option>
+                                <option>01:00 PM - 02:30 PM</option>
+                                <option>04:00 PM - 05:30 PM</option>
+                                <option>Private Evening Tour (06:30 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Special Requests or Due Diligence Notes</label>
+                        <textarea rows="3" placeholder="Specify if you require NDA documents, floor plan downloads, or co-brokerage details..." 
+                            class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-accentRed-500 hover:bg-accentRed-600 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-md transition-all text-xs">
+                        Confirm Viewing Appointment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-darkGreen-900/10 bg-darkGreen-900 text-cream-100 py-12 px-6 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full border border-cream-100 flex items-center justify-center font-serif font-bold text-cream-100">
+                    A
+                </div>
+                <span class="font-serif text-lg font-bold tracking-wider text-white">AURA ESTATES</span>
+            </div>
+            
+            <p class="text-cream-300/80">© 2026 AURA Estates Private Portfolio Office. All Rights Reserved.</p>
+
+            <div class="flex space-x-6 text-cream-300">
+                <a href="#" onclick="showToast('Privacy statement acknowledged', 'info')" class="hover:text-accentRed-400 transition-colors">Privacy Policy</a>
+                <a href="#" onclick="showToast('Terms of representation available upon request', 'info')" class="hover:text-accentRed-400 transition-colors">Terms of Representation</a>
+                <a href="#contact" class="hover:text-accentRed-400 transition-colors">Acquisition Desk</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DETAILED PROPERTY MODAL VIEW -->
+    <div id="property-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-darkGreen-950/80 backdrop-blur-md overflow-y-auto">
+        <div class="bg-cream-50 w-full max-w-5xl rounded-2xl border border-darkGreen-900/20 overflow-hidden shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
+            <!-- Close Button -->
+            <button onclick="closePropertyModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-darkGreen-900 text-white flex items-center justify-center hover:bg-accentRed-500 transition-all shadow-md">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Content -->
+            <div class="overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-8">
+                <!-- Header -->
+                <div>
+                    <div class="flex flex-wrap items-center gap-3 mb-2">
+                        <span id="modal-status-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"></span>
+                        <span id="modal-type-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-neBlue-600 text-white"></span>
+                    </div>
+                    <h2 id="modal-title" class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen-900"></h2>
+                    <p id="modal-location" class="text-neBlue-600 font-semibold text-sm mt-1 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i> <span></span>
+                    </p>
+                </div>
+
+                <!-- Gallery -->
+                <div class="space-y-4">
+                    <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-darkGreen-900/10 shadow-inner group">
+                        <img id="modal-main-image" src="" alt="Property" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkGreen-950/80 via-transparent to-transparent flex items-end p-6">
+                            <p id="modal-price" class="font-serif text-3xl font-bold text-white"></p>
+                        </div>
+                    </div>
+                    <div id="modal-thumbnails" class="grid grid-cols-4 gap-3"></div>
+                </div>
+
+                <!-- Quick Spec Ribbon -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-white p-4 rounded-xl border border-darkGreen-900/10 text-center shadow-sm">
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase">Bedrooms</p>
+                        <p id="modal-beds" class="font-serif text-xl font-bold text-darkGreen-900 mt-0.5">-</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase">Bathrooms</p>
+                        <p id="modal-baths" class="font-serif text-xl font-bold text-darkGreen-900 mt-0.5">-</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase">Built-Up Area</p>
+                        <p id="modal-sqft" class="font-serif text-xl font-bold text-darkGreen-900 mt-0.5">-</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase">Rental Return Yield</p>
+                        <p id="modal-yield" class="font-serif text-xl font-bold text-accentRed-500 mt-0.5">-</p>
+                    </div>
+                </div>
+
+                <!-- Tabbed Content: Specification vs Floor Plan -->
+                <div>
+                    <div class="flex border-b border-darkGreen-900/15 mb-6">
+                        <button id="tab-overview-btn" onclick="switchModalTab('overview')" class="py-3 px-6 text-sm font-bold text-darkGreen-900 border-b-2 border-darkGreen-900">
+                            Asset Specification
+                        </button>
+                        <button id="tab-floorplan-btn" onclick="switchModalTab('floorplan')" class="py-3 px-6 text-sm font-bold text-gray-500 border-b-2 border-transparent hover:text-darkGreen-900">
+                            Floor Plan & Blueprint
+                        </button>
+                    </div>
+
+                    <!-- Overview Content -->
+                    <div id="tab-overview-content" class="space-y-6">
+                        <p id="modal-description" class="text-gray-700 text-sm leading-relaxed font-normal"></p>
+                        
+                        <div>
+                            <h4 class="text-xs font-bold uppercase text-neBlue-600 tracking-widest mb-3">Key Architectural Features</h4>
+                            <div id="modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-darkGreen-900 font-medium"></div>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-darkGreen-900/10 text-xs">
+                            <div>
+                                <span class="text-gray-500 block">Tenure Type</span>
+                                <span id="modal-tenure" class="font-bold text-darkGreen-900"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 block">Year Completed</span>
+                                <span id="modal-year" class="font-bold text-darkGreen-900"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 block">Property ID Reference</span>
+                                <span id="modal-id" class="font-bold text-neBlue-600"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floor Plan Tab Content -->
+                    <div id="tab-floorplan-content" class="hidden space-y-4">
+                        <div class="bg-white border border-darkGreen-900/10 rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[250px] shadow-sm">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-neBlue-600 mb-3"></i>
+                            <h4 class="text-darkGreen-900 font-bold text-base">Architectural CAD Blueprint Available</h4>
+                            <p class="text-gray-600 text-xs mt-1 max-w-md">Detailed 2D/3D floor layouts and site plans ready for instant review.</p>
+                            <button onclick="downloadBrochure()" class="mt-4 px-6 py-2.5 bg-accentRed-500 hover:bg-accentRed-600 text-white text-xs font-bold rounded-full uppercase tracking-wider transition-all shadow-md">
+                                <i class="fa-solid fa-download"></i> Download High-Res PDF Brochure (14.2 MB)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pre-Filled Lead Inquiry Form inside Modal -->
+                <div class="bg-white p-6 rounded-2xl border border-darkGreen-900/10 shadow-md">
+                    <h3 class="font-serif text-lg font-bold text-darkGreen-900 mb-1">Direct Due Diligence Request</h3>
+                    <p class="text-xs text-gray-600 mb-4">Request confidential documents for <span id="modal-form-title" class="text-accentRed-500 font-bold"></span></p>
+                    
+                    <form onsubmit="handleInquirySubmit(event, 'Modal Due Diligence Form')">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                            <input type="text" required placeholder="Full Name" class="bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 focus:outline-none focus:border-neBlue-600">
+                            <input type="email" required placeholder="Email Address" class="bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 focus:outline-none focus:border-neBlue-600">
+                            <input type="tel" required placeholder="Phone Number" class="bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 focus:outline-none focus:border-neBlue-600">
+                        </div>
+                        <button type="submit" class="w-full bg-darkGreen-900 hover:bg-neBlue-600 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-xl transition-all shadow">
+                            Submit Confidential Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MORTGAGE & FINANCIAL ROI CALCULATOR MODAL -->
+    <div id="calculator-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-darkGreen-950/80 backdrop-blur-md overflow-y-auto">
+        <div class="bg-cream-50 w-full max-w-2xl rounded-2xl border border-darkGreen-900/20 p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeCalculatorModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-darkGreen-900 text-white flex items-center justify-center hover:bg-accentRed-500 transition-all shadow-md">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-accentRed-500 text-xs font-bold tracking-widest uppercase">Financial Suite</span>
+                <h3 class="font-serif text-2xl font-bold text-darkGreen-900">Mortgage & Rental Yield Calculator</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Property Selection Preset -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Select Property Valuation Preset</label>
+                    <select id="calc-preset-select" class="w-full bg-white border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 font-semibold focus:outline-none focus:border-neBlue-600">
+                        <option value="8500000">Tropics Sanctuary Estate ($8,500,000)</option>
+                        <option value="12800000">AURA Executive Sky Penthouse ($12,800,000)</option>
+                        <option value="4000000">Apex Innovation Commercial Hub ($4,000,000)</option>
+                        <option value="6200000">Serenity Eco Retreat & Coastal Reserve ($6,200,000)</option>
+                    </select>
+                </div>
+
+                <!-- Purchase Price Range -->
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-gray-600 uppercase">Purchase Price</span>
+                        <span id="calc-price-val" class="text-darkGreen-900">$8,500,000</span>
+                    </div>
+                    <input type="range" id="calc-price" min="1000000" max="20000000" step="250000" value="8500000" class="w-full accent-accentRed-500 bg-cream-200 h-2 rounded-lg cursor-pointer">
+                </div>
+
+                <!-- Down Payment Range -->
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-gray-600 uppercase">Down Payment (%)</span>
+                        <span id="calc-down-val" class="text-darkGreen-900">20% ($1,700,000)</span>
+                    </div>
+                    <input type="range" id="calc-down" min="10" max="50" step="5" value="20" class="w-full accent-accentRed-500 bg-cream-200 h-2 rounded-lg cursor-pointer">
+                </div>
+
+                <!-- Rate & Tenure Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Interest Rate (%)</label>
+                        <input type="number" id="calc-rate" step="0.1" value="5.5" class="w-full bg-white border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 font-bold focus:outline-none focus:border-neBlue-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Loan Tenure (Years)</label>
+                        <select id="calc-tenure" class="w-full bg-white border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 font-bold focus:outline-none focus:border-neBlue-600">
+                            <option value="15">15 Years</option>
+                            <option value="20">20 Years</option>
+                            <option value="30" selected>30 Years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Summary Panel -->
+                <div class="p-6 rounded-2xl bg-darkGreen-900 text-cream-100 text-center space-y-4 mt-6 shadow-xl">
+                    <div>
+                        <p class="text-[10px] text-cream-300 uppercase tracking-widest font-bold">Estimated Monthly Repayment</p>
+                        <p id="calc-monthly-payment" class="font-serif text-3xl font-bold text-accentRed-400 mt-1">$38,610</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pt-3 border-t border-cream-100/15 text-xs">
+                        <div>
+                            <span class="text-cream-300 text-[10px]">Net Loan Principal</span>
+                            <p id="calc-loan-principal" class="text-white font-bold">$6,800,000</p>
+                        </div>
+                        <div>
+                            <span class="text-cream-300 text-[10px]">Est. Gross Rental Yield</span>
+                            <p id="calc-est-yield" class="text-neBlue-300 font-bold">7.2% / year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // 4 FEATURED PROPERTIES ASSETS DATA
+        const propertiesData = [
+            {
+                id: "AURA-RES-01",
+                title: "Tropics Sanctuary Executive Villa",
+                type: "Villa",
+                status: "For Sale",
+                price: 8500000,
+                priceFormatted: "$8,500,000",
+                location: "Beverly Hills, California",
+                beds: 6,
+                baths: 8,
+                sqft: "9,800 sq ft",
+                yield: "6.8%",
+                tenure: "Freehold Title",
+                yearBuilt: "2024",
+                description: "An architectural masterpiece tucked into a private hillside grove. Features floor-to-ceiling glass walls, automated Lutron smart lighting, temperature-controlled wine cellar, infinite edge pool, and panoramic city vistas.",
+                images: [
+                    "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+                ],
+                features: [
+                    "Zero-edge heated infinity pool",
+                    "8-car climate subterranean gallery",
+                    "Smart Lutron & Sonos integration",
+                    "Custom minimalist Italian kitchen",
+                    "Private wellness spa & sauna"
+                ]
+            },
+            {
+                id: "AURA-PENT-02",
+                title: "AURA Executive Sky Penthouse",
+                type: "Penthouse",
+                status: "Investment",
+                price: 12800000,
+                priceFormatted: "$12,800,000",
+                location: "Tribeca, New York City",
+                beds: 4,
+                baths: 5,
+                sqft: "6,200 sq ft",
+                yield: "8.2%",
+                tenure: "Condominium",
+                yearBuilt: "2025",
+                description: "Spanning the top two floors of Tribeca's premier tower. Features 360-degree Manhattan skyline views, double-height ceilings, private elevator vestibule, and wrapped outdoor terrace with fireplace.",
+                images: [
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                ],
+                features: [
+                    "Private key direct elevator entrance",
+                    "Wrap-around 1,500 sqft sky terrace",
+                    "Dual master suites with Calacatta marble",
+                    "24/7 White-glove concierge",
+                    "Heated indoor private plunge pool"
+                ]
+            },
+            {
+                id: "AURA-COMM-03",
+                title: "Apex Innovation Commercial Hub",
+                type: "Commercial",
+                status: "For Sale",
+                price: 4000000,
+                priceFormatted: "$4,000,000",
+                location: "Austin Tech District, Texas",
+                beds: 0,
+                baths: 8,
+                sqft: "14,500 sq ft",
+                yield: "8.6%",
+                tenure: "Commercial Title",
+                yearBuilt: "2024",
+                description: "A premier Class-A commercial headquarters designed for high-growth tech or private family offices. Features fiber-optic infrastructure, flexible floor plans, electric vehicle charging matrix, and rooftop event garden.",
+                images: [
+                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+                ],
+                features: [
+                    "Class-A corporate workspace",
+                    "High-yield corporate tenant profile",
+                    "Integrated solar panel roof matrix",
+                    "32 underground parking bays",
+                    "Rooftop networking lounge"
+                ]
+            },
+            {
+                id: "AURA-ECO-04",
+                title: "Serenity Eco Retreat & Coastal Reserve",
+                type: "Eco Retreat",
+                status: "Pending",
+                price: 6200000,
+                priceFormatted: "$6,200,000",
+                location: "Key Biscayne, Florida",
+                beds: 5,
+                baths: 6,
+                sqft: "7,400 sq ft",
+                yield: "6.9%",
+                tenure: "Waterfront Title",
+                yearBuilt: "2023",
+                description: "A sustainable luxury sanctuary with private deep-water dockage. Integrated with solar energy generation, rainwater purification matrix, private beach access, and lush tropical gardens.",
+                images: [
+                    "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
+                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+                ],
+                features: [
+                    "Deep-water yacht dock (Up to 90ft)",
+                    "LEED Platinum eco certification",
+                    "Outdoor teak dining kitchen",
+                    "Solar grid & Tesla Powerwalls",
+                    "Private boat launch ramp"
+                ]
+            }
+        ];
+
+        let activeProperty = propertiesData[0];
+
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProperties(propertiesData);
+            setupFilters();
+            setupCalculator();
+            
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('booking-date').value = tomorrow.toISOString().split('T')[0];
+        });
+
+        // RENDER PROPERTY CARDS
+        function renderProperties(items) {
+            const container = document.getElementById('property-grid');
+            const noResults = document.getElementById('no-results');
+
+            if (items.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            container.innerHTML = items.map(prop => {
+                let statusBadgeStyle = 'bg-accentRed-500 text-white';
+                if (prop.status === 'Pending') statusBadgeStyle = 'bg-neBlue-600 text-white';
+                if (prop.status === 'Investment') statusBadgeStyle = 'bg-darkGreen-900 text-cream-100';
+
+                return `
+                    <div class="bg-white rounded-2xl overflow-hidden border border-darkGreen-900/10 hover:border-darkGreen-900/30 transition-all duration-300 group flex flex-col justify-between shadow-md hover:shadow-xl">
+                        <div>
+                            <!-- Card Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="${prop.images[0]}" alt="${prop.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-darkGreen-950/70 via-transparent to-black/20"></div>
+                                
+                                <div class="absolute top-4 left-4 flex gap-2">
+                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${statusBadgeStyle} shadow">
+                                        ${prop.status}
+                                    </span>
+                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cream-100 text-darkGreen-900 border border-darkGreen-900/15">
+                                        ${prop.type}
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                    <span class="font-serif text-2xl font-bold text-white">${prop.priceFormatted}</span>
+                                    <span class="text-xs text-cream-100 font-bold bg-neBlue-600/90 px-2.5 py-1 rounded-md backdrop-blur-sm"><i class="fa-solid fa-chart-line"></i> ${prop.yield} Yield</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-6">
+                                <h3 class="font-serif text-xl font-bold text-darkGreen-900 group-hover:text-accentRed-500 transition-colors">${prop.title}</h3>
+                                <p class="text-xs text-neBlue-600 font-semibold mt-1 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-location-dot"></i> ${prop.location}
+                                </p>
+
+                                <p class="text-gray-600 text-xs mt-3 line-clamp-2 font-normal leading-relaxed">
+                                    ${prop.description}
+                                </p>
+
+                                <!-- Specs Ribbon -->
+                                <div class="grid grid-cols-3 gap-2 py-3 my-4 border-y border-darkGreen-900/10 text-center text-xs">
+                                    <div>
+                                        <p class="text-gray-500 uppercase text-[9px] font-bold">Specs</p>
+                                        <p class="text-darkGreen-900 font-bold mt-0.5">${prop.beds > 0 ? prop.beds + ' Bed / ' + prop.baths + ' Bath' : prop.baths + ' Restrooms'}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase text-[9px] font-bold">Area</p>
+                                        <p class="text-darkGreen-900 font-bold mt-0.5">${prop.sqft}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase text-[9px] font-bold">Tenure</p>
+                                        <p class="text-neBlue-600 font-bold mt-0.5">${prop.tenure.split(' ')[0]}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="px-6 pb-6 pt-0 flex gap-3">
+                            <button onclick="openPropertyModal('${prop.id}')" class="flex-1 bg-darkGreen-900 hover:bg-neBlue-600 text-white py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow">
+                                View Details
+                            </button>
+                            <button onclick="quickCalc('${prop.price}')" class="bg-cream-200 hover:bg-cream-300 text-darkGreen-900 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all" title="Calculate Mortgage">
+                                <i class="fa-solid fa-calculator"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // FILTER & SEARCH HANDLER
+        function setupFilters() {
+            const searchInput = document.getElementById('search-input');
+            const typeFilter = document.getElementById('type-filter');
+            const statusFilter = document.getElementById('status-filter');
+
+            const filterHandler = () => {
+                const query = searchInput.value.toLowerCase();
+                const selectedType = typeFilter.value;
+                const selectedStatus = statusFilter.value;
+
+                const filtered = propertiesData.filter(item => {
+                    const matchesSearch = item.title.toLowerCase().includes(query) || 
+                                          item.location.toLowerCase().includes(query) ||
+                                          item.description.toLowerCase().includes(query);
+                    const matchesType = selectedType === 'All' || item.type === selectedType;
+                    const matchesStatus = selectedStatus === 'All' || item.status === selectedStatus;
+
+                    return matchesSearch && matchesType && matchesStatus;
+                });
+
+                renderProperties(filtered);
+            };
+
+            searchInput.addEventListener('input', filterHandler);
+            typeFilter.addEventListener('change', filterHandler);
+            statusFilter.addEventListener('change', filterHandler);
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('type-filter').value = 'All';
+            document.getElementById('status-filter').value = 'All';
+            renderProperties(propertiesData);
+        }
+
+        // PROPERTY MODAL LOGIC
+        function openPropertyModal(id) {
+            const prop = propertiesData.find(p => p.id === id);
+            if (!prop) return;
+            activeProperty = prop;
+
+            document.getElementById('modal-title').innerText = prop.title;
+            document.getElementById('modal-location').querySelector('span').innerText = prop.location;
+            document.getElementById('modal-price').innerText = prop.priceFormatted;
+            document.getElementById('modal-beds').innerText = prop.beds > 0 ? prop.beds : 'N/A';
+            document.getElementById('modal-baths').innerText = prop.baths;
+            document.getElementById('modal-sqft').innerText = prop.sqft;
+            document.getElementById('modal-yield').innerText = prop.yield;
+            document.getElementById('modal-description').innerText = prop.description;
+            document.getElementById('modal-tenure').innerText = prop.tenure;
+            document.getElementById('modal-year').innerText = prop.yearBuilt;
+            document.getElementById('modal-id').innerText = prop.id;
+            document.getElementById('modal-form-title').innerText = prop.title;
+
+            // Status Badge
+            const statusBadge = document.getElementById('modal-status-badge');
+            statusBadge.innerText = prop.status;
+            let badgeStyle = 'bg-accentRed-500 text-white';
+            if (prop.status === 'Pending') badgeStyle = 'bg-neBlue-600 text-white';
+            if (prop.status === 'Investment') badgeStyle = 'bg-darkGreen-900 text-cream-100';
+            statusBadge.className = `px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${badgeStyle}`;
+
+            document.getElementById('modal-type-badge').innerText = prop.type;
+
+            // Images Gallery
+            document.getElementById('modal-main-image').src = prop.images[0];
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+            thumbnailsContainer.innerHTML = prop.images.map(img => `
+                <div onclick="switchMainImage('${img}')" class="h-20 rounded-lg overflow-hidden border border-darkGreen-900/10 cursor-pointer hover:border-accentRed-500 transition-all">
+                    <img src="${img}" class="w-full h-full object-cover">
+                </div>
+            `).join('');
+
+            // Features List
+            document.getElementById('modal-features').innerHTML = prop.features.map(f => `
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-accentRed-500"></i> <span>${f}</span>
+                </div>
+            `).join('');
+
+            switchModalTab('overview');
+
+            document.getElementById('property-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePropertyModal() {
+            document.getElementById('property-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchMainImage(src) {
+            document.getElementById('modal-main-image').src = src;
+        }
+
+        function switchModalTab(tab) {
+            const overviewBtn = document.getElementById('tab-overview-btn');
+            const floorplanBtn = document.getElementById('tab-floorplan-btn');
+            const overviewContent = document.getElementById('tab-overview-content');
+            const floorplanContent = document.getElementById('tab-floorplan-content');
+
+            if (tab === 'overview') {
+                overviewBtn.className = 'py-3 px-6 text-sm font-bold text-darkGreen-900 border-b-2 border-darkGreen-900';
+                floorplanBtn.className = 'py-3 px-6 text-sm font-bold text-gray-500 border-b-2 border-transparent hover:text-darkGreen-900';
+                overviewContent.classList.remove('hidden');
+                floorplanContent.classList.add('hidden');
+            } else {
+                floorplanBtn.className = 'py-3 px-6 text-sm font-bold text-darkGreen-900 border-b-2 border-darkGreen-900';
+                overviewBtn.className = 'py-3 px-6 text-sm font-bold text-gray-500 border-b-2 border-transparent hover:text-darkGreen-900';
+                overviewContent.classList.add('hidden');
+                floorplanContent.classList.remove('hidden');
+            }
+        }
+
+        // CALCULATOR SUITE
+        function setupCalculator() {
+            const priceSlider = document.getElementById('calc-price');
+            const downSlider = document.getElementById('calc-down');
+            const rateInput = document.getElementById('calc-rate');
+            const tenureSelect = document.getElementById('calc-tenure');
+            const presetSelect = document.getElementById('calc-preset-select');
+
+            const calculate = () => {
+                const price = parseFloat(priceSlider.value);
+                const downPercent = parseFloat(downSlider.value);
+                const rate = parseFloat(rateInput.value) / 100 / 12;
+                const tenureYears = parseInt(tenureSelect.value);
+                const totalPayments = tenureYears * 12;
+
+                const downAmount = price * (downPercent / 100);
+                const principal = price - downAmount;
+
+                let monthlyPayment = 0;
+                if (rate > 0) {
+                    monthlyPayment = principal * (rate * Math.pow(1 + rate, totalPayments)) / (Math.pow(1 + rate, totalPayments) - 1);
+                } else {
+                    monthlyPayment = principal / totalPayments;
+                }
+
+                document.getElementById('calc-price-val').innerText = '$' + price.toLocaleString();
+                document.getElementById('calc-down-val').innerText = `${downPercent}% ($${downAmount.toLocaleString()})`;
+                document.getElementById('calc-monthly-payment').innerText = '$' + Math.round(monthlyPayment).toLocaleString();
+                document.getElementById('calc-loan-principal').innerText = '$' + principal.toLocaleString();
+                
+                const estYield = (price > 10000000) ? "8.2%" : "7.2%";
+                document.getElementById('calc-est-yield').innerText = `${estYield} / year`;
+            };
+
+            presetSelect.addEventListener('change', (e) => {
+                priceSlider.value = e.target.value;
+                calculate();
+            });
+
+            priceSlider.addEventListener('input', calculate);
+            downSlider.addEventListener('input', calculate);
+            rateInput.addEventListener('input', calculate);
+            tenureSelect.addEventListener('change', calculate);
+
+            calculate();
+        }
+
+        function quickCalc(priceVal) {
+            document.getElementById('calc-price').value = priceVal;
+            openCalculatorModal();
+            const event = new Event('input');
+            document.getElementById('calc-price').dispatchEvent(event);
+        }
+
+        function openCalculatorModal() {
+            document.getElementById('calculator-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCalculatorModal() {
+            document.getElementById('calculator-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadBrochure() {
+            showToast('Brochure PDF generating... Download link sent to registered email.', 'info');
+        }
+
+        // INTERACTION HANDLERS
+        function handleInquirySubmit(event, source) {
+            event.preventDefault();
+            showToast(`Inquiry successfully logged via ${source}! Our desk will contact you within 2 hours.`, 'success');
+            event.target.reset();
+            closePropertyModal();
+        }
+
+        function triggerWhatsApp(propertyTitle) {
+            const message = encodeURIComponent(`Hello, I am interested in scheduling a confidential viewing for: ${propertyTitle}.`);
+            showToast(`Connecting to WhatsApp Concierge...`, 'info');
+            setTimeout(() => {
+                window.open(`https://wa.me/15550192834?text=${message}`, '_blank');
+            }, 800);
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // TOAST NOTIFICATION UTILITY
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            const bgClass = type === 'success' 
+                ? 'bg-darkGreen-900 text-cream-100 border-accentRed-500' 
+                : 'bg-white text-darkGreen-900 border-neBlue-600';
+            
+            const icon = type === 'success' ? 'fa-circle-check text-accentRed-500' : 'fa-circle-info text-neBlue-600';
+
+            toast.className = `border-l-4 p-4 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-semibold pointer-events-auto transition-all transform translate-y-2 max-w-md ${bgClass}`;
+            toast.innerHTML = `
+                <i class="fa-solid ${icon} text-base"></i>
+                <span class="flex-1">${message}</span>
+                <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+    </script>
+</body>
+</html>
