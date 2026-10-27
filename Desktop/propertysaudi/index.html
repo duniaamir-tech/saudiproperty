@@ -98,14 +98,14 @@
     <nav class="fixed top-0 left-0 w-full z-40 transition-all duration-300 cream-glass border-b border-darkGreen-900/10 px-6 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3">
-                <img src="asset/alsadeg_logo.png" alt="Al Sadeg Properties" class="h-14 w-[84px] object-contain">
+                <img src="asset/alsadeg_logo.png" alt="Al Sadeg Properties" class="h-16 w-24 object-contain md:h-20 md:w-[120px]">
             </a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-darkGreen-900">
                 <a href="#hero" class="hover:text-accentRed-500 transition-colors">Overview</a>
                 <a href="#properties" class="hover:text-accentRed-500 transition-colors">Properties</a>
-                <a href="#calculator" onclick="openCalculatorModal()" class="hover:text-accentRed-500 transition-colors">Investment ROI</a>
+                <a href="#calculator-modal" onclick="openCalculatorModal()" class="hover:text-accentRed-500 transition-colors">Investment ROI</a>
                 <a href="#contact" class="hover:text-accentRed-500 transition-colors">Schedule Viewing</a>
             </div>
 
@@ -126,7 +126,7 @@
         <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-darkGreen-900/10 flex flex-col gap-4">
             <a href="#hero" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Overview</a>
             <a href="#properties" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Properties</a>
-            <a href="#calculator" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="openCalculatorModal(); toggleMobileMenu();">Investment ROI</a>
+            <a href="#calculator-modal" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="openCalculatorModal(); toggleMobileMenu();">Investment ROI</a>
             <a href="#contact" class="text-darkGreen-900 font-semibold text-sm hover:text-accentRed-500 py-1" onclick="toggleMobileMenu()">Schedule Viewing</a>
             <button onclick="scrollToContact(); toggleMobileMenu();" class="w-full bg-accentRed-500 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-full shadow">
                 Direct Inquiry
@@ -145,9 +145,8 @@
                 <i class="fa-solid fa-gem text-accentRed-500"></i> Private Real Estate Portfolio
             </div>
             
-            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 text-darkGreen-900">
-                Architectural Distinction. <br>
-                <span class="green-gradient-text">Exquisite Living Spaces.</span>
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 text-darkGreen-900"> <br>
+                <span class="green-gradient-text">Exquisite Living Spaces in Madinah, the City of Our Beloved Prophet.</span>
             </h1>
 
             <p class="text-gray-700 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
@@ -191,29 +190,7 @@
                 </div>
             </div>
 
-            <!-- Stats Bar -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-darkGreen-900/10 max-w-3xl mx-auto">
-                <div>
-                    <p class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900">4</p>
-                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Premier Listings</p>
-                </div>
-                <div>
-                    <p class="font-serif text-3xl md:text-4xl font-bold text-accentRed-500">$31.5M</p>
-                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Total Valuation</p>
-                </div>
-                <div>
-                    <p class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900">100%</p>
-                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Prime Locations</p>
-                </div>
-                <div>
-                    <p class="font-serif text-3xl md:text-4xl font-bold text-neBlue-600">7.6%</p>
-                    <p class="text-xs text-neBlue-600 font-semibold uppercase tracking-wider mt-1">Avg Rental Yield</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Properties Showcase Grid -->
+               <!-- Properties Showcase Grid -->
     <section id="properties" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-darkGreen-900/10 pb-6">
             <div>
@@ -239,32 +216,14 @@
         </div>
     </section>
 
-    <!-- Investment ROI Banner Anchor -->
-    <section id="calculator" class="py-16 px-6 bg-darkGreen-900 text-cream-100 relative overflow-hidden shadow-2xl">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-            <div class="max-w-2xl">
-                <span class="text-accentRed-400 text-xs font-bold tracking-widest uppercase">Financial Modeling</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold mt-1 text-white">Mortgage & Investment ROI Yield Calculator</h2>
-                <p class="text-cream-200 text-sm mt-2 font-normal leading-relaxed">
-                    Estimate down payments, monthly repayments, loan-to-value ratios, and projected rental returns across this private portfolio.
-                </p>
-            </div>
-            <div class="flex gap-4">
-                <button onclick="openCalculatorModal()" class="bg-accentRed-500 hover:bg-accentRed-600 text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg hover:shadow-accentRed-500/30">
-                    <i class="fa-solid fa-calculator"></i> Launch Financial Suite
-                </button>
-            </div>
-        </div>
-    </section>
-
     <!-- Direct Booking & Contact Section -->
     <section id="contact" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="max-w-3xl">
             <!-- Left Contact Info -->
-            <div class="lg:col-span-5 flex flex-col justify-between">
+            <div class="flex flex-col justify-between">
                 <div>
                     <span class="text-accentRed-500 text-xs font-bold tracking-widest uppercase">Private Representation</span>
-                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900 mt-2 mb-4">Schedule a Confidential Tour</h2>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-darkGreen-900 mt-2 mb-4">Contact Our Portfolio Team</h2>
                     <p class="text-gray-600 text-sm leading-relaxed mb-8 font-normal">
                         Connect directly with the portfolio representative to request private access, due diligence documentation, or custom acquisition structures.
                     </p>
@@ -276,7 +235,7 @@
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold uppercase text-gray-500 tracking-wider">Direct Hotline</h4>
-                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">+1 (800) 458-2872 / +1 (555) 019-2834</p>
+                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">+60194430400 (Malaysia) / +966505662574 (KSA)</p>
                             </div>
                         </div>
 
@@ -286,7 +245,7 @@
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold uppercase text-gray-500 tracking-wider">Portfolio Desk</h4>
-                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">acquisitions@aura-portfolio.com</p>
+                                <p class="text-darkGreen-900 font-semibold text-sm mt-0.5">duniaamir@gmail.com (Malaysia) / alsadeg.g@gmail.com (KSA)</p>
                             </div>
                         </div>
 
@@ -311,92 +270,22 @@
                     All buyer details and viewing requests remain strictly private under NDA guidelines.
                 </div>
             </div>
-
-            <!-- Right Interactive Form / Calendar -->
-            <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-darkGreen-900/10 shadow-xl">
-                <form id="general-inquiry-form" onsubmit="handleInquirySubmit(event, 'Private Tour Request')">
-                    <h3 class="font-serif text-2xl font-bold text-darkGreen-900 mb-6 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar-check text-neBlue-600"></i> Select Viewing Schedule
-                    </h3>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Full Name *</label>
-                            <input type="text" required placeholder="John Doe" 
-                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Email Address *</label>
-                            <input type="email" required placeholder="john@example.com" 
-                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Phone Number *</label>
-                            <input type="tel" required placeholder="+1 (555) 000-0000" 
-                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Select Property Asset *</label>
-                            <select id="contact-property-select" class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 font-medium focus:outline-none focus:border-neBlue-600 transition-colors">
-                                <option value="Tropics Sanctuary Estate">Tropics Sanctuary Estate ($8,500,000)</option>
-                                <option value="AURA Executive Sky Penthouse">AURA Executive Sky Penthouse ($12,800,000)</option>
-                                <option value="Apex Innovation Commercial Hub">Apex Innovation Commercial Hub ($4,000,000)</option>
-                                <option value="Serenity Eco Retreat & Coastal Reserve">Serenity Eco Retreat & Coastal Reserve ($6,200,000)</option>
-                                <option value="Entire Portfolio Package">Entire Portfolio Package ($31,500,000)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Preferred Viewing Date *</label>
-                            <input type="date" required id="booking-date" 
-                                class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Preferred Time Slot *</label>
-                            <select class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 font-medium focus:outline-none focus:border-neBlue-600 transition-colors">
-                                <option>10:00 AM - 11:30 AM</option>
-                                <option>01:00 PM - 02:30 PM</option>
-                                <option>04:00 PM - 05:30 PM</option>
-                                <option>Private Evening Tour (06:30 PM)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Special Requests or Due Diligence Notes</label>
-                        <textarea rows="3" placeholder="Specify if you require NDA documents, floor plan downloads, or co-brokerage details..." 
-                            class="w-full bg-cream-50 border border-darkGreen-900/15 rounded-xl p-3 text-sm text-darkGreen-900 focus:outline-none focus:border-neBlue-600 transition-colors resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-accentRed-500 hover:bg-accentRed-600 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-md transition-all text-xs">
-                        Confirm Viewing Appointment
-                    </button>
-                </form>
-            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-darkGreen-900/10 bg-darkGreen-900 text-cream-100 py-12 px-6 text-xs">
+    <footer class="border-t border-darkGreen-900/10 bg-cream-50 text-darkGreen-900 py-8 px-6 text-xs">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full border border-cream-100 flex items-center justify-center font-serif font-bold text-cream-100">
-                    A
-                </div>
-                <span class="font-serif text-lg font-bold tracking-wider text-white">AURA ESTATES</span>
+            <div class="flex items-center">
+                <img src="asset/alsadeg_logo.png" alt="Al Sadeg Properties" class="h-20 w-28 object-contain">
             </div>
             
-            <p class="text-cream-300/80">© 2026 AURA Estates Private Portfolio Office. All Rights Reserved.</p>
+            <p class="text-darkGreen-900/70">© 2026 Al Sadeg Properties. All Rights Reserved.</p>
 
-            <div class="flex space-x-6 text-cream-300">
-                <a href="#" onclick="showToast('Privacy statement acknowledged', 'info')" class="hover:text-accentRed-400 transition-colors">Privacy Policy</a>
-                <a href="#" onclick="showToast('Terms of representation available upon request', 'info')" class="hover:text-accentRed-400 transition-colors">Terms of Representation</a>
-                <a href="#contact" class="hover:text-accentRed-400 transition-colors">Acquisition Desk</a>
+            <div class="flex space-x-6 text-darkGreen-900/70">
+                <a href="#" onclick="showToast('Privacy statement acknowledged', 'info')" class="hover:text-accentRed-500 transition-colors">Privacy Policy</a>
+                <a href="#" onclick="showToast('Terms of representation available upon request', 'info')" class="hover:text-accentRed-500 transition-colors">Terms of Representation</a>
+                <a href="#contact" class="hover:text-accentRed-500 transition-colors">Acquisition Desk</a>
             </div>
         </div>
     </footer>
@@ -530,23 +419,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <div class="mb-6">
-                <span class="text-accentRed-500 text-xs font-bold tracking-widest uppercase">Financial Suite</span>
-                <h3 class="font-serif text-2xl font-bold text-darkGreen-900">Mortgage & Rental Yield Calculator</h3>
-            </div>
-
             <div class="space-y-4">
-                <!-- Property Selection Preset -->
-                <div>
-                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Select Property Valuation Preset</label>
-                    <select id="calc-preset-select" class="w-full bg-white border border-darkGreen-900/15 rounded-xl p-3 text-xs text-darkGreen-900 font-semibold focus:outline-none focus:border-neBlue-600">
-                        <option value="8500000">Tropics Sanctuary Estate ($8,500,000)</option>
-                        <option value="12800000">AURA Executive Sky Penthouse ($12,800,000)</option>
-                        <option value="4000000">Apex Innovation Commercial Hub ($4,000,000)</option>
-                        <option value="6200000">Serenity Eco Retreat & Coastal Reserve ($6,200,000)</option>
-                    </select>
-                </div>
-
                 <!-- Purchase Price Range -->
                 <div>
                     <div class="flex justify-between text-xs font-bold mb-1">
@@ -604,138 +477,134 @@
 
     <!-- JAVASCRIPT APP LOGIC -->
     <script>
-        // 4 FEATURED PROPERTIES ASSETS DATA
+        // FEATURED PROPERTY DATA
         const propertiesData = [
             {
-                id: "AURA-RES-01",
-                title: "Tropics Sanctuary Executive Villa",
+                id: "SAUDI-VILLA-01",
+                title: "Madinah Apartment",
+                type: "Apartment",
+                status: "For Sale",
+                price: 420000,
+                priceFormatted: "SAR 420,000",
+                location: "Madinah, Saudi Arabia",
+                beds: 3,
+                baths: 2,
+                sqft: "157.25 sq m",
+                yield: "7.2%",
+                tenure: "Freehold Title",
+                yearBuilt: "2006",
+                description: "A brief property description.",
+                images: [
+                    "asset/ASA73/ASA732.png",
+                    "asset/ASA73/ASA731.png",
+                    "asset/ASA73/ASA733.png",
+                    "asset/ASA73/ASA734.png",
+                    "asset/ASA73/ASA735.png",
+                    "asset/ASA73/ASA736.png",
+                    "asset/ASA73/ASA737.png",
+                    "asset/ASA73/ASA738.png"
+                ],
+                features: [
+                    "2 entrances to apartment",
+                    "Parking Space",
+                    "Elevator",
+                    "Living Room Hall Kitchen"
+                ]
+            },
+            {
+                id: "SAUDI-VILLA-02",
+                title: "Madinah Apartment",
                 type: "Villa",
                 status: "For Sale",
-                price: 8500000,
-                priceFormatted: "$8,500,000",
-                location: "Beverly Hills, California",
-                beds: 6,
+                price: 1700000,
+                priceFormatted: "SAR 1,700,000",
+                location: "Madinah, Saudi Arabia",
+                beds: 15,
                 baths: 8,
-                sqft: "9,800 sq ft",
-                yield: "6.8%",
+                sqft: "400 sq m",
+                yield: "7.2%",
                 tenure: "Freehold Title",
-                yearBuilt: "2024",
-                description: "An architectural masterpiece tucked into a private hillside grove. Features floor-to-ceiling glass walls, automated Lutron smart lighting, temperature-controlled wine cellar, infinite edge pool, and panoramic city vistas.",
+                yearBuilt: "2022",
+                description: "A brief property description.",
                 images: [
-                    "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+                    "asset/ASA79/ASA79-page3.png",
+                    "asset/ASA79/ASA79-page1.png",
+                    "asset/ASA79/ASA79-page3.png",
+                    "asset/ASA79/ASA79-page4.png",
+                    "asset/ASA79/ASA79-page5.png",
+                    "asset/ASA79/ASA79-page6.png",
+                    "asset/ASA79/ASA79-page7.png",
+                    "asset/ASA79/ASA79-page8.png",
+                    "asset/ASA79/ASA79-page9.png"
                 ],
                 features: [
-                    "Zero-edge heated infinity pool",
-                    "8-car climate subterranean gallery",
-                    "Smart Lutron & Sonos integration",
-                    "Custom minimalist Italian kitchen",
-                    "Private wellness spa & sauna"
+                    "Fully Renovated 3 Floors",
+                    "Room, Kitchen, Living Room, Hall",
+                    "Stairs",
+                    "Location Al-Iskan District"
                 ]
             },
             {
-                id: "AURA-PENT-02",
-                title: "AURA Executive Sky Penthouse",
-                type: "Penthouse",
-                status: "Investment",
-                price: 12800000,
-                priceFormatted: "$12,800,000",
-                location: "Tribeca, New York City",
-                beds: 4,
-                baths: 5,
-                sqft: "6,200 sq ft",
-                yield: "8.2%",
-                tenure: "Condominium",
-                yearBuilt: "2025",
-                description: "Spanning the top two floors of Tribeca's premier tower. Features 360-degree Manhattan skyline views, double-height ceilings, private elevator vestibule, and wrapped outdoor terrace with fireplace.",
-                images: [
-                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                ],
-                features: [
-                    "Private key direct elevator entrance",
-                    "Wrap-around 1,500 sqft sky terrace",
-                    "Dual master suites with Calacatta marble",
-                    "24/7 White-glove concierge",
-                    "Heated indoor private plunge pool"
-                ]
-            },
-            {
-                id: "AURA-COMM-03",
-                title: "Apex Innovation Commercial Hub",
-                type: "Commercial",
+                id: "SAUDI-VILLA-03",
+                title: "Madinah Apartment",
+                type: "Building",
                 status: "For Sale",
-                price: 4000000,
-                priceFormatted: "$4,000,000",
-                location: "Austin Tech District, Texas",
-                beds: 0,
-                baths: 8,
-                sqft: "14,500 sq ft",
-                yield: "8.6%",
-                tenure: "Commercial Title",
-                yearBuilt: "2024",
-                description: "A premier Class-A commercial headquarters designed for high-growth tech or private family offices. Features fiber-optic infrastructure, flexible floor plans, electric vehicle charging matrix, and rooftop event garden.",
+                price: 2200000,
+                priceFormatted: "SAR 2,200,000",
+                location: "Madinah, Saudi Arabia",
+                beds: 20,
+                baths: 12,
+                sqft: "667 sq m",
+                yield: "7.2%",
+                tenure: "Freehold Title",
+                yearBuilt: "1996",
+                description: "A brief property description.",
                 images: [
-                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+                    "asset/ASA90/ASA90-page1.png",
+                    "asset/ASA90/ASA90-page2.png"
                 ],
                 features: [
-                    "Class-A corporate workspace",
-                    "High-yield corporate tenant profile",
-                    "Integrated solar panel roof matrix",
-                    "32 underground parking bays",
-                    "Rooftop networking lounge"
+                    "Street Width 14 Meter",
+                    "Room, Kitchen, Living Room, Hall",
+                    "Stairs",
+                    "Location Al-Iskan District"
                 ]
             },
             {
-                id: "AURA-ECO-04",
-                title: "Serenity Eco Retreat & Coastal Reserve",
-                type: "Eco Retreat",
-                status: "Pending",
-                price: 6200000,
-                priceFormatted: "$6,200,000",
-                location: "Key Biscayne, Florida",
+                id: "SAUDI-VILLA-04",
+                title: "Madinah Building For Sale",
+                type: "Building",
+                status: "For Sale",
+                price: 2500000,
+                priceFormatted: "SAR 2,500,000",
+                location: "Madinah, Saudi Arabia",
                 beds: 5,
-                baths: 6,
-                sqft: "7,400 sq ft",
-                yield: "6.9%",
-                tenure: "Waterfront Title",
-                yearBuilt: "2023",
-                description: "A sustainable luxury sanctuary with private deep-water dockage. Integrated with solar energy generation, rainwater purification matrix, private beach access, and lush tropical gardens.",
+                baths: 3,
+                sqft: "442 sq m",
+                yield: "7.2%",
+                tenure: "Freehold Title",
+                yearBuilt: "2009",
+                description: "A brief property description.",
                 images: [
-                    "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+                    "asset/ASA91/ASA91-page1.png",
+                    "asset/ASA91/ASA91-page2.png"
                 ],
                 features: [
-                    "Deep-water yacht dock (Up to 90ft)",
-                    "LEED Platinum eco certification",
-                    "Outdoor teak dining kitchen",
-                    "Solar grid & Tesla Powerwalls",
-                    "Private boat launch ramp"
+                    "Room, Kitchen, Living Room, Hall",
+                    "Elevators",
+                    "Location Al-Iskan District"
                 ]
             }
         ];
+        const featuredProperties = propertiesData.slice(0, 4);
 
         let activeProperty = propertiesData[0];
 
         // INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
-            renderProperties(propertiesData);
+            renderProperties(featuredProperties);
             setupFilters();
             setupCalculator();
-            
-            // Set default date to tomorrow
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('booking-date').value = tomorrow.toISOString().split('T')[0];
         });
 
         // RENDER PROPERTY CARDS
@@ -812,9 +681,6 @@
                             <button onclick="openPropertyModal('${prop.id}')" class="flex-1 bg-darkGreen-900 hover:bg-neBlue-600 text-white py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow">
                                 View Details
                             </button>
-                            <button onclick="quickCalc('${prop.price}')" class="bg-cream-200 hover:bg-cream-300 text-darkGreen-900 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all" title="Calculate Mortgage">
-                                <i class="fa-solid fa-calculator"></i>
-                            </button>
                         </div>
                     </div>
                 `;
@@ -831,8 +697,10 @@
                 const query = searchInput.value.toLowerCase();
                 const selectedType = typeFilter.value;
                 const selectedStatus = statusFilter.value;
+                const hasSearchCriteria = query !== '' || selectedType !== 'All' || selectedStatus !== 'All';
+                const propertiesToFilter = hasSearchCriteria ? propertiesData : featuredProperties;
 
-                const filtered = propertiesData.filter(item => {
+                const filtered = propertiesToFilter.filter(item => {
                     const matchesSearch = item.title.toLowerCase().includes(query) || 
                                           item.location.toLowerCase().includes(query) ||
                                           item.description.toLowerCase().includes(query);
@@ -854,7 +722,7 @@
             document.getElementById('search-input').value = '';
             document.getElementById('type-filter').value = 'All';
             document.getElementById('status-filter').value = 'All';
-            renderProperties(propertiesData);
+            renderProperties(featuredProperties);
         }
 
         // PROPERTY MODAL LOGIC
@@ -942,7 +810,6 @@
             const downSlider = document.getElementById('calc-down');
             const rateInput = document.getElementById('calc-rate');
             const tenureSelect = document.getElementById('calc-tenure');
-            const presetSelect = document.getElementById('calc-preset-select');
 
             const calculate = () => {
                 const price = parseFloat(priceSlider.value);
@@ -970,24 +837,12 @@
                 document.getElementById('calc-est-yield').innerText = `${estYield} / year`;
             };
 
-            presetSelect.addEventListener('change', (e) => {
-                priceSlider.value = e.target.value;
-                calculate();
-            });
-
             priceSlider.addEventListener('input', calculate);
             downSlider.addEventListener('input', calculate);
             rateInput.addEventListener('input', calculate);
             tenureSelect.addEventListener('change', calculate);
 
             calculate();
-        }
-
-        function quickCalc(priceVal) {
-            document.getElementById('calc-price').value = priceVal;
-            openCalculatorModal();
-            const event = new Event('input');
-            document.getElementById('calc-price').dispatchEvent(event);
         }
 
         function openCalculatorModal() {
@@ -1016,7 +871,7 @@
             const message = encodeURIComponent(`Hello, I am interested in scheduling a confidential viewing for: ${propertyTitle}.`);
             showToast(`Connecting to WhatsApp Concierge...`, 'info');
             setTimeout(() => {
-                window.open(`https://wa.me/15550192834?text=${message}`, '_blank');
+                window.open(`https://wa.me/+60194430400?text=${message}`, '_blank');
             }, 800);
         }
 
